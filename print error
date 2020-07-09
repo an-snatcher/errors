@@ -1,0 +1,39 @@
+Checking patch print.admin.inc...
+error: while searching for:
+    '#description' => t('When this option is active, user comments are also included in the printer-friendly version. Requires the comment module.'),
+  );
+
+  $form['settings']['print_newwindow'] = array(
+    '#type' => 'radios',
+    '#title' => t('New window method'),
+
+error: patch failed: print.admin.inc:71
+error: print.admin.inc: patch does not apply
+Checking patch print.module...
+error: while searching for:
+define('PRINT_URLS_DEFAULT', 1);
+define('PRINT_URLS_ANCHORS_DEFAULT', 0);
+define('PRINT_COMMENTS_DEFAULT', 0);
+define('PRINT_NEWWINDOW_DEFAULT', 1);
+
+define('PRINT_TYPE_URLLIST_DEFAULT', 1);
+
+error: patch failed: print.module:21
+error: print.module: patch does not apply
+Checking patch print.pages.inc...
+error: while searching for:
+    $path = $alias;
+  }
+  $parts = explode('/', $path);
+  if (($parts[0] == 'node') && (count($parts) > 1) && ctype_digit($parts[1])) {
+    array_shift($parts);
+    $path = implode('/', $parts);
+  }
+  $revision_view = preg_match('!^[\d]*/revisions/[\d]*/view$!', $path);
+  if (ctype_digit($parts[0]) && ((count($parts) == 1) || $revision_view)) {
+    $vid = $revision_view ? $parts[2] : NULL;
+    $node = _print_generate_node($path, $format, $vid, $cid, $view_mode);
+  }
+
+error: patch failed: print.pages.inc:87
+error: print.pages.inc: patch does not apply
